@@ -7,18 +7,94 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/1e3be9b4ce.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
 <body>
+    <div class="header"></div>
     <div id="app">
-        <ul>
-            <li v-for="(contact, i) in contacts">
-                <!-- <img :src="`img/avatar${contact.avatar}.jpg`" alt=""> -->
-                <!-- <img :src="'img/avatar' + contact.avatar + '.jpg'" alt=""> -->
-                <img :src="getImageUrl(contact)" alt="">
-                <div>{{contact.name}}</div>
-            </li>
-        </ul>
+        <div class="app-container">
+            <!-- Container del menu laterale dell'utente -->
+            <div class="side-container">
+                <!-- Sezione azioni utente -->
+                <div class="user-actions">
+                    <div class="actions">
+                        <img class="profile-pic" src="img/avatar_io.jpg" alt="">
+                        <p class="username">Nome Utente</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-circle-notch"></i>
+                        <i class="fas fa-comment-alt"></i>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                </div>
+                <!-- Sezione attivazione/disattivazione notifiche -->
+                <div class="notifications">
+                    <div>
+                        <i class="fas fa-bell-slash"></i>
+                    </div>
+                    <div>
+                        <p class="">Ricevi notifiche di nuovi messaggi</p>
+                        <p class="">Attiva notifiche desktop</p>
+                    </div>
+                </div>
+                <!-- Sezione input ricerca contatto -->
+                <div class="search-contact">
+                    <input placeholder="Cerca o inizia una nuova chat">
+                </div>
+                <!-- Sezione contatti utente -->
+                <ul class="contacts-list">
+                    <li v-for="(contact, i) in contacts" @click="showContactChat(i)">
+                        <!-- <img :src="`img/avatar${contact.avatar}.jpg`" alt=""> -->
+                        <!-- <img :src="'img/avatar' + contact.avatar + '.jpg'" alt=""> -->
+                        <img class="profile-pic" :src="getImageUrl(contact)" alt="">
+                        <p>{{contact.name}}</p>
+                    </li>
+                </ul>
+            </div>
+            <!-- Container della chat con interlocutore -->
+            <div class="main-container">
+                <!-- Sezione azioni interlocutore-->
+                <div class="contact-actions">
+                    <div class="actions">
+                        <img class="profile-pic" src="img/avatar_1.jpg" alt="">
+                        <div>
+                            <p class="username">Michele</p>
+                            <p class="last-access">Ultimo accesso oggi alle</p>
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fas fa-search"></i>
+                        <i class="fas fa-paperclip"></i>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                </div>
+                <!-- Sezione visualizzazione dei messaggi -->
+                <div class="chat-display">
+                    <div class="chat" 
+                    v-for="message in contacts[currentIndex].messages">
+                        <div class="float-right" v-if='message.status === "sent"'>
+                            <div class="message sent">
+                                <p>{{message.text}}</p>
+                                <p>{{message.date}}</p>
+                            </div>
+                        </div>
+                        <div class="float-left" v-else>
+                            <div class="message received">
+                                <p>{{message.text}}</p>
+                                <p>{{message.date}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sezione input nuovo messaggio -->
+                <div class="new-message">
+                    <i class="far fa-smile"></i>
+                    <input v-model="newMessage" placeholder="Scrivi un messaggio">
+                    <i class="fas fa-microphone"></i>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="js/script.js"></script>
 </body>

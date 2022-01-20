@@ -1,6 +1,8 @@
 new Vue({
     el: '#app',
     data: {
+        newMessage: '',
+        currentIndex: 0,
         contacts: [
             {
                 name: 'Michele',
@@ -86,11 +88,14 @@ new Vue({
                     }
                 ],
             },
-        ]
+        ],
     },
     methods: {
         getImageUrl(contact) {
             return 'img/avatar' + contact.avatar + '.jpg';
-        }
+        },
+        showContactChat(i) {
+            this.currentIndex = i;
+        },
     }
 })

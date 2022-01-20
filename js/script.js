@@ -2,6 +2,7 @@ new Vue({
     el: '#app',
     data: {
         newMessage: '',
+        researchContact: '',
         currentIndex: 0,
         contacts: [
             {

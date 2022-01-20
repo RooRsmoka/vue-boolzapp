@@ -40,15 +40,17 @@
                 </div>
                 <!-- Sezione input ricerca contatto -->
                 <div class="search-contact">
-                    <input placeholder="Cerca o inizia una nuova chat">
+                    <input v-model="researchContact" placeholder="Cerca o inizia una nuova chat">
                 </div>
                 <!-- Sezione contatti utente -->
                 <ul class="contacts-list">
                     <li v-for="(contact, i) in contacts" @click="showContactChat(i)">
                         <!-- <img :src="`img/avatar${contact.avatar}.jpg`" alt=""> -->
                         <!-- <img :src="'img/avatar' + contact.avatar + '.jpg'" alt=""> -->
-                        <img class="profile-pic" :src="getImageUrl(contact)" alt="">
-                        <p>{{contact.name}}</p>
+                        <div v-if="contact.name.toLowerCase().includes(researchContact)">
+                            <img class="profile-pic" :src="getImageUrl(contact)" alt="">
+                            <p>{{contact.name}}</p>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -71,8 +73,7 @@
                 </div>
                 <!-- Sezione visualizzazione dei messaggi -->
                 <div class="chat-display">
-                    <div class="chat" 
-                    v-for="message in contacts[currentIndex].messages">
+                    <div class="chat" v-for="message in contacts[currentIndex].messages">
                         <div class="float-right" v-if='message.status === "sent"'>
                             <div class="message sent">
                                 <p>{{message.text}}</p>

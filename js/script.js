@@ -97,5 +97,26 @@ new Vue({
         showContactChat(i) {
             this.currentIndex = i;
         },
+        sendMessage(contact) {
+            contact.messages.push({
+                date: this.getCurrentDate(),
+                text: this.newMessage,
+                status: 'sent'
+            })
+            this.newMessage = '';
+            setTimeout(() => {
+                this.autoReply(contact)
+            }, 1000)
+        },
+        autoReply(contact) {
+            contact.messages.push({
+                date: this.getCurrentDate(),
+                text: 'Ok',
+                status: 'received',
+            })
+        },
+        getCurrentDate() {
+            return dayjs().format('DD/MM/YYYY HH:mm:ss')
+        }
     }
 })

@@ -90,7 +90,7 @@
                 <!-- Sezione input nuovo messaggio -->
                 <div class="new-message">
                     <i class="far fa-smile"></i>
-                    <input v-model="newMessage" placeholder="Scrivi un messaggio">
+                    <input v-model="newMessage" @keyup.enter="sendMessage(contacts[currentIndex])" placeholder="Scrivi un messaggio">
                     <i class="fas fa-microphone"></i>
                 </div>
             </div>

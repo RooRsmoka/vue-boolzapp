@@ -34,8 +34,8 @@
                         <i class="fas fa-bell-slash"></i>
                     </div>
                     <div>
-                        <p class="">Ricevi notifiche di nuovi messaggi</p>
-                        <p class="">Attiva notifiche desktop</p>
+                        <p class="active-notifications">Ricevi notifiche di nuovi messaggi</p>
+                        <p class="desktop-notifications">Attiva notifiche desktop</p>
                     </div>
                 </div>
                 <!-- Sezione input ricerca contatto -->
@@ -47,7 +47,7 @@
                     <li v-for="(contact, i) in contacts" @click="showContactChat(i)">
                         <!-- <img :src="`img/avatar${contact.avatar}.jpg`" alt=""> -->
                         <!-- <img :src="'img/avatar' + contact.avatar + '.jpg'" alt=""> -->
-                        <div v-if="contact.name.toLowerCase().includes(researchContact)">
+                        <div class="contacts" v-if="contact.name.toLowerCase().includes(researchContact)">
                             <img class="profile-pic" :src="getImageUrl(contact)" alt="">
                             <p>{{contact.name}}</p>
                         </div>
@@ -61,7 +61,7 @@
                     <div class="actions">
                         <img class="profile-pic" src="img/avatar_1.jpg" alt="">
                         <div>
-                            <p class="username">Michele</p>
+                            <p class="username">{{contacts[currentIndex].name}}</p>
                             <p class="last-access">Ultimo accesso oggi alle</p>
                         </div>
                     </div>

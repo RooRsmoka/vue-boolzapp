@@ -30,6 +30,13 @@ body {
     top: 0;
 }
 
+.fas {
+    margin: 0 10px;
+    font-size: 20px;
+    color: #B1B1B1;
+    cursor: pointer;
+}
+
 /* Containers */
 .app-container {
     width: 1200px;
@@ -40,20 +47,20 @@ body {
 }
 
 .side-container {
-    width: 400px;
+    width: 30%;
     display: flex;
     flex-direction: column;
     background-color: #fff;
 }
 
 .main-container {
-    width: 800px;
+    width: 70%;
     display: flex;
     flex-direction: column;
 }
 /* Containers end */
 
-/*  */
+/* Barre superiori azioni utenti */
 .user-actions, .contact-actions {
     display: flex;
     justify-content: space-between;
@@ -77,15 +84,17 @@ body {
 }
 
 .actions .last-access {
-    font-size: ;
+    font-size: 12px;
+    color: #6A7376;
 }
+/* Fine barre superiori azioni utenti */
 
+/* Sezione contatti */
 .contacts-list {
     list-style: none;
 }
 
 .contacts-list li {
-    display: flex;
     margin: 10px 15px;
     cursor: pointer;
 }
@@ -95,17 +104,17 @@ body {
     font-size: 18px;
 }
 
-.fas {
-    margin: 0 10px;
-    font-size: 20px;
-    color: #B1B1B1;
-    cursor: pointer;
+.contacts {
+    display: flex;
 }
+/* Fine ezione contatti */
+
 /* Sezione attivazione/disattivazione notifiche */
 .notifications {
     background-color: cyan;
     padding: 15px 10px;
     display: flex;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -116,7 +125,6 @@ body {
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    margin-right: 10px;
     background-color: #fff;
 }
 
@@ -124,8 +132,32 @@ body {
     color: cyan;
     cursor: pointer;
 }
+
+.active-notifications {
+    font-size: 18px;
+}
+
+.desktop-notifications {
+    font-size: 14px;
+    color: #4F7485;
+    text-decoration: underline;
+    cursor: pointer;
+}
 /* Fine sezione attivazione/disattivazione notifiche */
 
+/* Sezione input ricerca contatto */
+.search-contact {
+    padding: 10px 15px;
+}
+
+.search-contact input {
+    height: 30px;
+    width: 100%;
+    font-size: 14px;
+}
+/* Fine sezione input ricerca contatto */
+
+/*  */
 .chat-display {
     height: calc(100% - 120px);
     background: url(../img/mine.jpg);
@@ -144,8 +176,6 @@ body {
     border-radius: 20px;
 }
 
-
-
 .sent {
     background-color: green;
 }
@@ -153,12 +183,7 @@ body {
 .received {
     background-color: #fff;
 }
-
-
-
-
-
-
+/*  */
 
 /* Sezione input nuovo messaggio */
 .new-message {
